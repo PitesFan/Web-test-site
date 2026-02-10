@@ -1,34 +1,39 @@
-const content = {
- title: "Our cats",
- info:  "Meow, meow, meow, meow",
- sectionName: "Cats pictures",
- imageLinks: [
-  "cat1.jpg",
-  "cat2.jpg",
-  "cat3.jpg",
- ],
-};
+fetch("data.json")
+    .then(res => {
+     return res.json();
+    })
+    .then(data => {
+     console.log(data);
+     render(data);
+    });
 
-const heading1 = document.getElementById("heading1");
-const paragraph = document.getElementById("paragraph");
-heading1.innerText = content.title;
-paragraph.innerText = content.info;
+function render(content) {
+ console.log(content);
 
-const header = document.getElementById("header");
-const headerH2 = header.getElementsByTagName("h2")[0];
-headerH2.innerText = content.sectionName;
+ document.title = content.title;
 
-// Add images
-const heroImages = document.getElementById("heroImages");
-// const image = document.createElement("img");
-// image.setAttribute("src", content.imageLinks[0]);
-// heroImages.appendChild(image);
+ const heading1 = document.getElementById("heading1");
+ heading1.innerText = content.title;
 
-for(let i = 0; i < content.imageLinks.length; i++) {
- const imgSrc = content.imageLinks[i];
- const img = document.createElement("img");
- img.setAttribute("src", imgSrc);
- heroImages.appendChild(img);
+ const paragraph = document.getElementById("paragraph");
+ paragraph.innerText = content.info;
+
+ const header = document.getElementById("header");
+ const headerH2 = header.getElementsByTagName("h2")[0];
+ headerH2.innerText = content.sectionName;
+
+ // Add images
+ const heroImages = document.getElementById("heroImages");
+ // const image = document.createElement("img");
+ // image.setAttribute("src", content.imageLinks[0]);
+ // heroImages.appendChild(image);
+
+ for (let i = 0; i < content.imageLinks.length; i++) {
+  const imgSrc = content.imageLinks[i];
+  const img = document.createElement("img");
+  img.setAttribute("src", imgSrc);
+  heroImages.appendChild(img);
+ }
 }
 
 

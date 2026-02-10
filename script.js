@@ -4,13 +4,16 @@ fetch("data.json")
     })
     .then(data => {
      console.log(data);
-     render(data);
+     addData(data);
     });
 
-function render(content) {
+function addData(content) {
  console.log(content);
 
  document.title = content.title;
+
+ const logo = document.getElementById("logo");
+ logo.innerText =content.logo;
 
  const heading1 = document.getElementById("heading1");
  heading1.innerText = content.title;

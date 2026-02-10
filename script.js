@@ -33,9 +33,15 @@ function addData(content) {
 
  for (let i = 0; i < content.imageLinks.length; i++) {
   const imgSrc = content.imageLinks[i];
+  const imgDescr = content.imageDescription[i];
+  const div = document.createElement("div");
   const img = document.createElement("img");
+  const p = document.createElement("p");
+  p.innerText = imgDescr;
   img.setAttribute("src", imgSrc);
-  heroImages.appendChild(img);
+  heroImages.appendChild(div);
+  div.appendChild(img);
+  div.appendChild(p);
  }
 }
 
